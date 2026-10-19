@@ -28,9 +28,9 @@ const SITE_TEXT = {
     previous: "Previous",
     next: "Next",
     audioFallback: "Demo narration is being read by your browser. Replace it with your recorded MP3 later.",
-    audioMissing: "Add the recorded audio file in /assets/audio to use professional narration.",
-    noVideo: "Add your documentary / memorial video file here.",
-    noMap: "Add your battlefield map, site plan or visitor map here."
+    audioMissing: "Narration is currently unavailable.",
+noVideo: "A video of this memorial section will be available soon.",
+noMap: "A reference map will be available soon."
   },
   hi: {
     heroEyebrow: "एक डिजिटल स्मारक अनुभव",
@@ -59,9 +59,9 @@ const SITE_TEXT = {
     previous: "पिछला",
     next: "अगला",
     audioFallback: "डेमो वाचन आपके ब्राउज़र द्वारा चलाया जा रहा है। बाद में रिकॉर्ड किया हुआ MP3 जोड़ें।",
-    audioMissing: "प्रोफेशनल वाचन के लिए /assets/audio में रिकॉर्ड की हुई ऑडियो फ़ाइल जोड़ें।",
-    noVideo: "यहाँ अपना डॉक्यूमेंट्री / स्मारक वीडियो जोड़ें।",
-    noMap: "यहाँ युद्धक्षेत्र मानचित्र, साइट प्लान या आगंतुक मानचित्र जोड़ें।"
+  audioMissing: "वाचन अभी उपलब्ध नहीं है।",
+noVideo: "इस स्मारक स्थल का वीडियो शीघ्र उपलब्ध होगा।",
+noMap: "संदर्भ मानचित्र शीघ्र उपलब्ध होगा।"
   }
 };
 
@@ -333,7 +333,7 @@ available: "ऐतिहासिक वृत्तांत · मानचि
    Though the tree now stands lifeless, its roots remain deeply embedded in the soil —
    echoing the spirit of bravery and devotion.`,
 
-  `<span class="story-title">Faith and श्रद्धा</span>
+  `<span class="story-title">Faith and Reverenceा</span>
    Locals and visitors offer prayers, seek blessings and write letters,
    believing that the brave soul still guards the land.`,
 
@@ -356,10 +356,39 @@ available: "ऐतिहासिक वृत्तांत · मानचि
       card:"इस पवित्र स्मारक बिंदु से जुड़ी कथा, प्रतीकात्मकता और स्मरण को जानें।",
       summary:"चित्रों, पाठ और द्विभाषी ऑडियो के माध्यम से एक स्मरणात्मक कथा।",
       heading:"एक मौन साक्षी",
-      body:[
-        "इस भाग में वृक्ष से जुड़ा सत्यापित विवरण और जसवंतगढ़ आने वाले आगंतुकों के लिए उसका महत्व लिखें।",
-        "इस पृष्ठ का स्वर युद्धक्षेत्र पृष्ठ की तुलना में अधिक स्मरणात्मक हो सकता है, लेकिन सत्यापित इतिहास और बाद की मान्यताओं को स्पष्ट रूप से अलग रखें।"
-      ],
+      heading: "शौर्य और श्रद्धा का मौन साक्षी",
+body: [
+
+  `<span class="story-title">स्मृति का वृक्ष</span>
+   यह वृक्ष गहरा ऐतिहासिक और भावनात्मक महत्व रखता है।
+   ऐसा माना जाता है कि <strong>1962 के भारत–चीन युद्ध</strong> के दौरान
+   गंभीर रूप से घायल होने के बाद
+   <strong>राइफलमैन जसवंत सिंह रावत, महावीर चक्र (मरणोपरांत)</strong>
+   ने इसी वृक्ष की छाँव में अपनी अंतिम साँस ली थी।`,
+
+  `<span class="story-title">समर्पण का अमर प्रतीक</span>
+   वृक्ष भले ही निर्जीव प्रतीत होता हो, लेकिन इसकी जड़ें
+   आज भी धरती की गहराइयों से जुड़ी हुई हैं।
+   यह दृश्य उनके <strong>अटूट समर्पण और अदम्य साहस</strong>
+   की स्मृति को जीवित रखता है।`,
+
+  `<span class="story-title">आस्था और श्रद्धा</span>
+   स्थानीय लोग और पर्यटक यहाँ प्रार्थना करते हैं,
+   आशीर्वाद माँगते हैं और पत्र लिखते हैं।
+   उनकी आस्था है कि इस वीर की आत्मा
+   आज भी इस भूमि की रक्षा कर रही है।`,
+
+  `<span class="story-highlight">
+   यह केवल एक वृक्ष नहीं, बल्कि शौर्य और श्रद्धा का पवित्र प्रहरी है।
+   </span>`,
+
+  `<span class="story-title">पीढ़ियों को प्रेरित करती विरासत</span>
+   यह वृक्ष वीरता, कर्तव्यनिष्ठा और सम्मान की अमिट विरासत
+   का प्रतीक है। जसवंतगढ़ आने वाले आगंतुकों को यह
+   <strong>राइफलमैन जसवंत सिंह रावत के सर्वोच्च बलिदान</strong>
+   का स्मरण कराता है और आने वाली पीढ़ियों को प्रेरित करता है।`
+
+],
       location:"जसवंतगढ़ स्मारक",
       time:"4–6 मिनट",
       available:"कथा · गैलरी · ऑडियो"
@@ -475,6 +504,7 @@ heading: "In Honour of the Brave",
     hi: {
       checkpoint: "खंड 4 · स्मरण",
 title: "अमर शहीद एवं शौर्यवीर",
+      card: "1962 के युद्ध में सर्वोच्च बलिदान देने वाले सैनिकों और अपने पराक्रम से इतिहास रचने वाले शौर्यवीरों को नमन।",
 summary: "शहीदों की नामावली, वीरों की छवियों और वीरता की गाथाओं के माध्यम से 1962 के युद्ध में उनके योगदान को जानें।",
 heading: "वीरों को नमन",
       body: [
