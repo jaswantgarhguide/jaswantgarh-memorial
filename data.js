@@ -87,7 +87,7 @@ const EXHIBITS = [
     hi: "राइफलमैन जसवंत सिंह रावत की आवक्ष प्रतिमा"
   }
 ],
-    audio: {en:"assets/audio/nura.mp3", hi:"assets/audio/Hindi_Nura.mp3"},
+    audio: {en:"assets/audio/Nura.mp3", hi:"assets/audio/Hindi_Nura.mp3"},
     video: "",
     map: "assets/images/Nura/map.png",
     en: {
@@ -225,12 +225,12 @@ available: "ऐतिहासिक वृत्तांत · मानचि
     image: "assets/images/Chinese/back.png",
     gallery: [
   {
-    src: "assets/images/Chinese/place.jpg",
+    src: "assets/images/Chinese/Place.jpg",
     en: "Chinese Graveyard",
     hi: "चीनी सैनिकों का कब्रिस्तान"
   },
   {
-    src: "assets/images/Chinese/board.jpg",
+    src: "assets/images/Chinese/Board.jpg",
     en: "Historical Inscription",
     hi: "ऐतिहासिक विवरण पट्ट"
   },
