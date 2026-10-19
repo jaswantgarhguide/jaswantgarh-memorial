@@ -600,7 +600,7 @@ heading: "वीरों को नमन",
     video: "assets/video/nearby-places.mp4",
 map: "assets/images/nearby-places.png",
     en: {
-      checkpoint:"Section 6 · Visitor Experience",
+      checkpoint:"Section 5 · Visitor Experience",
       title:"Explore Nearby",
       card:"Continue your journey with nearby historical, cultural and scenic places around Jaswantgarh.",
       summary:"A practical guide to nearby places of interest, supported by photographs and route information.",
@@ -633,7 +633,7 @@ body: [
       available:"Places · Routes · Gallery · Visitor Info"
     },
     hi: {
-      checkpoint:"खंड 6 · आगंतुक अनुभव",
+      checkpoint:"खंड 5 · आगंतुक अनुभव",
       title:"आसपास भ्रमण करें",
       card:"जसवंतगढ़ के आसपास के ऐतिहासिक, सांस्कृतिक और दर्शनीय स्थानों के साथ अपनी यात्रा जारी रखें।",
       summary:"चित्रों और मार्ग संबंधी जानकारी के साथ आसपास के प्रमुख स्थलों की उपयोगी मार्गदर्शिका।",
