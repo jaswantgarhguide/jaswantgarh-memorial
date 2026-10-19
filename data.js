@@ -71,11 +71,7 @@ const EXHIBITS = [
     group: "history",
     image: "assets/images/nuranag-cover.png",
    gallery: [
-  {
-    src: "assets/images/Nura/battle-map.png",
-    en: "Battlefield overview / tactical map",
-    hi: "नूरानांग युद्धक्षेत्र का मानचित्र"
-  },
+  
   {
     src: "assets/images/Nura/mmg.png",
     en: "Sten Machine Gun MK 5",
