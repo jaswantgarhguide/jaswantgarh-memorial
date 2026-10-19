@@ -1155,3 +1155,7 @@ h3,
     grid-template-columns: 1fr;
   }
 }
+/* Yellow story headings in English and Hindi */
+#story-body .story-title {
+  color: #efbd50;
+}
