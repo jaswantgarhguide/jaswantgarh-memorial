@@ -357,7 +357,7 @@ available: "ऐतिहासिक वृत्तांत · मानचि
    Though the tree now stands lifeless, its roots remain deeply embedded in the soil —
    echoing the spirit of bravery and devotion.`,
 
-  `<span class="story-title">Faith and Reverenceा</span>
+  `<span class="story-title">Faith and Reverence</span>
    Locals and visitors offer prayers, seek blessings and write letters,
    believing that the brave soul still guards the land.`,
 
