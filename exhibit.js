@@ -3,7 +3,10 @@ const exhibitId = params.get("id") || "nuranang";
 const exhibit = getExhibit(exhibitId);
 // Hide narration and QR buttons in these three sections.
 if (["martyrs", "shaurya-bhoomi", "explore-nearby"].includes(exhibit.id)) {
-  document.querySelector(".audio-box").style.display = "none";
+  if (["martyrs", "explore-nearby"].includes(exhibit.id)) {
+  document.getElementById("audio-toggle").style.display = "none";
+  document.getElementById("audio-status").style.display = "none";
+}
 }
 
 const requestedLang = params.get("lang");
