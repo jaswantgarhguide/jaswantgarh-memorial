@@ -31,22 +31,6 @@ const SITE_TEXT = {
     audioMissing: "Narration is currently unavailable.",
 noVideo: "A video of this memorial section will be available soon.",
 noMap: "A reference map will be available soon."
-    remarksKicker: "MESSAGES OF REMEMBRANCE",
-remarksTitle: "Leave Your Message",
-remarksSubtitle: "Share your thoughts and message of remembrance.",
-remarksName: "Your Name",
-remarksNamePlaceholder: "Enter your name",
-remarksMessage: "Your Message",
-remarksMessagePlaceholder: "Write your message...",
-remarksSubmit: "SUBMIT REMARK",
-remarksSubmitting: "SUBMITTING...",
-remarksVisitors: "Messages from Visitors",
-remarksEmpty: "No remarks yet. Be the first to leave a message.",
-remarksSuccess: "Thank you. Your remark has been added.",
-remarksNameError: "Please enter your name.",
-remarksMessageError: "Please enter your message.",
-remarksLoadError: "Unable to load remarks.",
-remarksSubmitError: "Unable to submit your remark. Please try again."
   },
   hi: {
     heroEyebrow: "एक डिजिटल स्मारक अनुभव",
@@ -78,22 +62,6 @@ remarksSubmitError: "Unable to submit your remark. Please try again."
   audioMissing: "वाचन अभी उपलब्ध नहीं है।",
 noVideo: "इस स्मारक स्थल का वीडियो शीघ्र उपलब्ध होगा।",
 noMap: "संदर्भ मानचित्र शीघ्र उपलब्ध होगा।"
-    remarksKicker: "स्मरण के संदेश",
-remarksTitle: "अपना संदेश लिखें",
-remarksSubtitle: "अपने विचार साझा करें और इस स्मारक से जुड़े साहस एवं बलिदान को नमन करें।",
-remarksName: "आपका नाम",
-remarksNamePlaceholder: "अपना नाम लिखें",
-remarksMessage: "आपका संदेश",
-remarksMessagePlaceholder: "अपना संदेश लिखें...",
-remarksSubmit: "संदेश भेजें",
-remarksSubmitting: "भेजा जा रहा है...",
-remarksVisitors: "आगंतुकों के संदेश",
-remarksEmpty: "अभी कोई संदेश नहीं है। पहला संदेश आप लिखें।",
-remarksSuccess: "धन्यवाद। आपका संदेश जोड़ दिया गया है।",
-remarksNameError: "कृपया अपना नाम लिखें।",
-remarksMessageError: "कृपया अपना संदेश लिखें।",
-remarksLoadError: "संदेश लोड नहीं हो सके।",
-remarksSubmitError: "संदेश भेजा नहीं जा सका। कृपया पुनः प्रयास करें।"
   }
 };
 
