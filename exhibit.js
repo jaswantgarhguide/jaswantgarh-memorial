@@ -576,3 +576,162 @@ document.querySelectorAll("#story-body .nearby-place-title")
     heading.replaceChildren(link);
   });
 }
+
+/* =========================================================
+   VISITOR REMARKS - SUPABASE
+========================================================= */
+
+const remarkSections = [
+  "nuranang",
+  "chinese-graveyard",
+  "jaswant-tree"
+];
+
+const remarksAllowed = remarkSections.includes(exhibit.id);
+
+const remarksSection = document.getElementById("visitorRemarksSection");
+const remarksForm = document.getElementById("remarksForm");
+const visitorName = document.getElementById("visitorName");
+const visitorMessage = document.getElementById("visitorMessage");
+const remarkStatus = document.getElementById("remarkStatus");
+const remarksList = document.getElementById("remarksList");
+
+if (remarksSection) {
+  remarksSection.hidden = !remarksAllowed;
+}
+
+
+/* LOAD EXISTING REMARKS */
+
+async function loadRemarks() {
+
+  if (!remarksAllowed || !remarksList) return;
+
+  if (!window.supabaseClient) {
+    remarkStatus.textContent = "Unable to connect to remarks service.";
+    return;
+  }
+
+  remarksList.textContent = "Loading remarks...";
+
+  const { data, error } = await window.supabaseClient
+    .from("tributes")
+    .select("id, name, message, created_at")
+    .eq("section_id", exhibit.id)
+    .order("created_at", { ascending: false })
+    .limit(50);
+
+  if (error) {
+    console.error(error);
+    remarksList.textContent = "Unable to load remarks.";
+    return;
+  }
+
+  remarksList.replaceChildren();
+
+  if (!data || data.length === 0) {
+    const empty = document.createElement("p");
+    empty.className = "remark-empty";
+    empty.textContent = "No remarks yet. Be the first to leave a message.";
+    remarksList.appendChild(empty);
+    return;
+  }
+
+  data.forEach(item => {
+
+    const card = document.createElement("article");
+    card.className = "remark-card";
+
+    const name = document.createElement("strong");
+    name.className = "remark-card-name";
+    name.textContent = item.name;
+
+    const message = document.createElement("p");
+    message.className = "remark-card-message";
+    message.textContent = item.message;
+
+    const date = document.createElement("span");
+    date.className = "remark-card-date";
+
+    date.textContent = new Date(item.created_at)
+      .toLocaleDateString(
+        state.lang === "hi" ? "hi-IN" : "en-IN",
+        {
+          day: "numeric",
+          month: "short",
+          year: "numeric"
+        }
+      );
+
+    card.append(name, message, date);
+
+    remarksList.appendChild(card);
+  });
+}
+
+
+/* SUBMIT NEW REMARK */
+
+if (remarksForm && remarksAllowed) {
+
+  remarksForm.addEventListener("submit", async function(event) {
+
+    event.preventDefault();
+
+    const name = visitorName.value.trim();
+    const message = visitorMessage.value.trim();
+
+    if (name.length < 2) {
+      remarkStatus.textContent = "Please enter your name.";
+      visitorName.focus();
+      return;
+    }
+
+    if (message.length < 3) {
+      remarkStatus.textContent = "Please enter your message.";
+      visitorMessage.focus();
+      return;
+    }
+
+    const submitButton =
+      remarksForm.querySelector('button[type="submit"]');
+
+    submitButton.disabled = true;
+    submitButton.textContent = "SUBMITTING...";
+
+    remarkStatus.textContent = "";
+
+    const { error } = await window.supabaseClient
+      .from("tributes")
+      .insert({
+        section_id: exhibit.id,
+        name: name,
+        message: message
+      });
+
+    if (error) {
+
+      console.error(error);
+
+      remarkStatus.textContent =
+        "Unable to submit your remark. Please try again.";
+
+    } else {
+
+      remarksForm.reset();
+
+      remarkStatus.textContent =
+        "Thank you. Your remark has been added.";
+
+      await loadRemarks();
+    }
+
+    submitButton.disabled = false;
+    submitButton.textContent = "SUBMIT REMARK";
+  });
+}
+
+
+/* LOAD REMARKS WHEN PAGE OPENS */
+
+loadRemarks();
