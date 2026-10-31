@@ -1447,3 +1447,80 @@ h3,
 .visitor-remarks .section-heading > p:last-child{
   color:#999d92;
 }
+
+/* ================================
+   VISITOR REMARK CARDS
+================================ */
+
+.remark-card{
+  position:relative;
+  margin-bottom:14px;
+  padding:20px 22px 18px 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29,30,26,.96),
+      rgba(18,19,16,.98)
+    );
+
+  border:1px solid rgba(190,159,78,.22);
+  border-radius:12px;
+}
+
+/* Thin gold accent */
+.remark-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:14px;
+  bottom:14px;
+  width:2px;
+  background:var(--gold);
+}
+
+
+/* Visitor name */
+.remark-card-name{
+  display:block;
+
+  color:#d8b85a;
+
+  font-size:.9rem;
+  font-weight:600;
+
+  margin-bottom:7px;
+}
+
+
+/* Visitor message */
+.remark-card-message{
+  color:#e1ddd2;
+
+  font-size:.92rem;
+  line-height:1.65;
+
+  margin:0;
+}
+
+
+/* Date */
+.remark-card-date{
+  display:block;
+
+  margin-top:11px;
+
+  color:#7f8378;
+
+  font-size:.72rem;
+  letter-spacing:.03em;
+}
+
+
+/* Empty state */
+.remark-empty{
+  color:#8f9387;
+  font-size:.9rem;
+  font-style:italic;
+  padding:14px 0;
+}
