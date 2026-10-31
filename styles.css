@@ -1432,3 +1432,18 @@ h3,
   }
 
 }
+/* Remarks heading colour refinement */
+
+.visitor-remarks .eyebrow{
+  color:var(--gold) !important;
+  letter-spacing:.15em;
+  font-weight:600;
+}
+
+.visitor-remarks .section-heading h2{
+  color:#f2ede1;
+}
+
+.visitor-remarks .section-heading > p:last-child{
+  color:#999d92;
+}
