@@ -616,7 +616,7 @@ async function loadRemarks() {
 
   const { data, error } = await window.supabaseClient
     .from("tributes")
-    .select("id, name, message, created_at")
+    .select("id, name, message, created_at, selfie_url")
     .eq("section_id", exhibit.id)
     .order("created_at", { ascending: false })
     .limit(50);
@@ -639,29 +639,73 @@ async function loadRemarks() {
 
   data.forEach(item => {
 
-    const card = document.createElement("article");
-    card.className = "remark-card";
+  const card = document.createElement("article");
+  card.className = "remark-card";
 
-    const name = document.createElement("strong");
-    name.className = "remark-card-name";
-    name.textContent = item.name;
+  const content = document.createElement("div");
+  content.className = "remark-card-content";
 
-    const message = document.createElement("p");
-    message.className = "remark-card-message";
-    message.textContent = item.message;
 
-    const date = document.createElement("span");
-    date.className = "remark-card-date";
+  /* Selfie */
 
-    date.textContent = new Date(item.created_at)
-      .toLocaleDateString(
-        state.lang === "hi" ? "hi-IN" : "en-IN",
-        {
-          day: "numeric",
-          month: "short",
-          year: "numeric"
-        }
-      );
+  if (item.selfie_url) {
+
+    const selfie = document.createElement("img");
+
+    selfie.className = "remark-card-selfie";
+
+    selfie.src = item.selfie_url;
+
+    selfie.alt = `${item.name} selfie`;
+
+    selfie.loading = "lazy";
+
+    card.appendChild(selfie);
+
+  }
+
+
+  /* Name */
+
+  const name = document.createElement("strong");
+  name.className = "remark-card-name";
+  name.textContent = item.name;
+
+
+  /* Message */
+
+  const message = document.createElement("p");
+  message.className = "remark-card-message";
+  message.textContent = item.message;
+
+
+  /* Date */
+
+  const date = document.createElement("span");
+  date.className = "remark-card-date";
+
+  date.textContent = new Date(item.created_at)
+    .toLocaleDateString(
+      state.lang === "hi" ? "hi-IN" : "en-IN",
+      {
+        day: "numeric",
+        month: "short",
+        year: "numeric"
+      }
+    );
+
+
+  content.append(
+    name,
+    message,
+    date
+  );
+
+  card.appendChild(content);
+
+  remarksList.appendChild(card);
+
+});
 
     card.append(name, message, date);
 
