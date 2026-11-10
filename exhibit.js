@@ -961,3 +961,31 @@ if (removeRemarkSelfie) {
   });
 
 }
+
+/* =========================================================
+   VISITOR SELFIE - FULL SCREEN VIEW
+========================================================= */
+
+const remarksSelfieArea = document.getElementById("remarksList");
+
+if (remarksSelfieArea) {
+
+  remarksSelfieArea.addEventListener("click", function (event) {
+
+    const clickedImage = event.target.closest("img");
+
+    if (!clickedImage || !clickedImage.src) return;
+
+    lightboxImage.src = clickedImage.src;
+    lightboxImage.alt =
+      clickedImage.alt || "Visitor selfie";
+
+    lightboxCaption.textContent = "";
+
+    lightbox.hidden = false;
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+}
