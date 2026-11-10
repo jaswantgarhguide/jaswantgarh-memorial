@@ -669,6 +669,116 @@ async function loadRemarks() {
   });
 }
 
+/* =========================================================
+   COMPRESS + UPLOAD REMARK SELFIE
+========================================================= */
+
+function compressRemarkSelfie(file) {
+
+  return new Promise((resolve, reject) => {
+
+    const image = new Image();
+    const imageURL = URL.createObjectURL(file);
+
+    image.onload = function () {
+
+      const size = 360;
+
+      const canvas = document.createElement("canvas");
+      const ctx = canvas.getContext("2d");
+
+      canvas.width = size;
+      canvas.height = size;
+
+      const sourceSize =
+        Math.min(image.naturalWidth, image.naturalHeight);
+
+      const sourceX =
+        (image.naturalWidth - sourceSize) / 2;
+
+      const sourceY =
+        (image.naturalHeight - sourceSize) / 2;
+
+      ctx.drawImage(
+        image,
+        sourceX,
+        sourceY,
+        sourceSize,
+        sourceSize,
+        0,
+        0,
+        size,
+        size
+      );
+
+      canvas.toBlob(
+        function (blob) {
+
+          URL.revokeObjectURL(imageURL);
+
+          if (blob) {
+            resolve(blob);
+          } else {
+            reject(new Error("Unable to process selfie."));
+          }
+
+        },
+        "image/jpeg",
+        0.78
+      );
+
+    };
+
+    image.onerror = function () {
+      URL.revokeObjectURL(imageURL);
+      reject(new Error("Unable to read selfie."));
+    };
+
+    image.src = imageURL;
+
+  });
+
+}
+
+
+async function uploadRemarkSelfie() {
+
+  if (!selectedRemarkSelfie) {
+    return null;
+  }
+
+  const compressedSelfie =
+    await compressRemarkSelfie(selectedRemarkSelfie);
+
+  const fileName =
+    `${exhibit.id}/${Date.now()}-${Math.random()
+      .toString(36)
+      .slice(2)}.jpg`;
+
+  const { error } =
+    await window.supabaseClient.storage
+      .from("tribute-selfies")
+      .upload(
+        fileName,
+        compressedSelfie,
+        {
+          contentType: "image/jpeg",
+          upsert: false
+        }
+      );
+
+  if (error) {
+    throw error;
+  }
+
+  const { data } =
+    window.supabaseClient.storage
+      .from("tribute-selfies")
+      .getPublicUrl(fileName);
+
+  return data.publicUrl;
+}
+
 
 /* SUBMIT NEW REMARK */
 
@@ -701,13 +811,34 @@ if (remarksForm && remarksAllowed) {
 
     remarkStatus.textContent = "";
 
-    const { error } = await window.supabaseClient
-      .from("tributes")
-      .insert({
-        section_id: exhibit.id,
-        name: name,
-        message: message
-      });
+    let selfieUrl = null;
+
+try {
+
+  selfieUrl = await uploadRemarkSelfie();
+
+} catch (selfieError) {
+
+  console.error(selfieError);
+
+  remarkStatus.textContent =
+    "Selfie could not be uploaded. Please try again.";
+
+  submitButton.disabled = false;
+  submitButton.textContent = "SUBMIT REMARK";
+
+  return;
+}
+
+
+const { error } = await window.supabaseClient
+  .from("tributes")
+  .insert({
+    section_id: exhibit.id,
+    name: name,
+    message: message,
+    selfie_url: selfieUrl
+  });
 
     if (error) {
 
@@ -719,6 +850,15 @@ if (remarksForm && remarksAllowed) {
     } else {
 
       remarksForm.reset();
+      selectedRemarkSelfie = null;
+
+if (remarkSelfiePreview) {
+  remarkSelfiePreview.src = "";
+}
+
+if (remarkSelfiePreviewWrap) {
+  remarkSelfiePreviewWrap.hidden = true;
+}
 
       remarkStatus.textContent =
         "Thank you. Your remark has been added.";
