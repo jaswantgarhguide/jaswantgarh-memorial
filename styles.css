@@ -1550,3 +1550,108 @@ h3,
 .visitor-remarks .section-heading{
   margin-bottom:22px;
 }
+
+/* =========================================================
+   COMMENT SELFIE
+========================================================= */
+
+.remark-selfie-field{
+  margin-top:4px;
+}
+
+.remark-selfie-field > label{
+  display:block;
+  margin-bottom:8px;
+
+  color:#d7d2c5;
+
+  font-size:.75rem;
+  font-weight:600;
+
+  text-transform:uppercase;
+  letter-spacing:.08em;
+}
+
+.remark-selfie-field > label span{
+  color:#7f8378;
+  font-weight:400;
+  text-transform:none;
+  letter-spacing:0;
+}
+
+
+/* Hide normal ugly file input */
+
+#remarkSelfie{
+  width:100%;
+
+  padding:10px 12px;
+
+  border:1px dashed rgba(190,159,78,.38);
+  border-radius:10px;
+
+  background:#11130f;
+
+  color:#a9aa9f;
+
+  font-size:.78rem;
+
+  cursor:pointer;
+}
+
+
+/* Small preview */
+
+.remark-selfie-preview{
+  margin-top:12px;
+
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.remark-selfie-preview[hidden]{
+  display:none;
+}
+
+.remark-selfie-preview img{
+  width:64px;
+  height:64px;
+
+  object-fit:cover;
+
+  border-radius:50%;
+
+  border:2px solid var(--gold);
+}
+
+.remark-selfie-preview button{
+  margin:0;
+
+  padding:8px 14px;
+
+  border:1px solid #45483e;
+
+  border-radius:999px;
+
+  background:transparent;
+
+  color:#bbb8ad;
+
+  font-size:.68rem;
+  font-weight:600;
+
+  letter-spacing:.06em;
+}
+
+
+/* Mobile */
+
+@media(max-width:600px){
+
+  .remark-selfie-preview img{
+    width:56px;
+    height:56px;
+  }
+
+}
