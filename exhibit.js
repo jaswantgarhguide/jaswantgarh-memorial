@@ -641,6 +641,17 @@ async function loadRemarks() {
 
     const card = document.createElement("article");
     card.className = "remark-card";
+    if (item.selfie_url) {
+
+  const selfie = document.createElement("img");
+
+  selfie.className = "remark-card-selfie";
+  selfie.src = item.selfie_url;
+  selfie.alt = "Visitor selfie";
+  selfie.loading = "lazy";
+
+  card.appendChild(selfie);
+}
 
     const name = document.createElement("strong");
     name.className = "remark-card-name";
@@ -663,7 +674,12 @@ async function loadRemarks() {
         }
       );
 
-    card.append(name, message, date);
+   const content = document.createElement("div");
+content.className = "remark-card-content";
+
+content.append(name, message, date);
+
+card.appendChild(content);
 
     remarksList.appendChild(card);
   });
