@@ -735,3 +735,73 @@ if (remarksForm && remarksAllowed) {
 /* LOAD REMARKS WHEN PAGE OPENS */
 
 loadRemarks();
+
+/* =========================================================
+   REMARK SELFIE PREVIEW
+========================================================= */
+
+const remarkSelfieInput =
+  document.getElementById("remarkSelfie");
+
+const remarkSelfiePreviewWrap =
+  document.getElementById("remarkSelfiePreviewWrap");
+
+const remarkSelfiePreview =
+  document.getElementById("remarkSelfiePreview");
+
+const removeRemarkSelfie =
+  document.getElementById("removeRemarkSelfie");
+
+let selectedRemarkSelfie = null;
+
+
+/* Show preview after taking/selecting selfie */
+
+if (remarkSelfieInput) {
+
+  remarkSelfieInput.addEventListener("change", function () {
+
+    const file = remarkSelfieInput.files[0];
+
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+
+      remarkSelfieInput.value = "";
+
+      alert("Please select an image.");
+
+      return;
+    }
+
+    selectedRemarkSelfie = file;
+
+    const previewURL =
+      URL.createObjectURL(file);
+
+    remarkSelfiePreview.src = previewURL;
+
+    remarkSelfiePreviewWrap.hidden = false;
+
+  });
+
+}
+
+
+/* Remove selected selfie */
+
+if (removeRemarkSelfie) {
+
+  removeRemarkSelfie.addEventListener("click", function () {
+
+    selectedRemarkSelfie = null;
+
+    remarkSelfieInput.value = "";
+
+    remarkSelfiePreview.src = "";
+
+    remarkSelfiePreviewWrap.hidden = true;
+
+  });
+
+}
