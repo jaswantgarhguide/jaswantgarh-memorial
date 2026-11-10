@@ -616,7 +616,7 @@ async function loadRemarks() {
 
   const { data, error } = await window.supabaseClient
     .from("tributes")
-    .select("id, name, message, created_at")
+    .select("id, name, message, created_at, selfie_url")
     .eq("section_id", exhibit.id)
     .order("created_at", { ascending: false })
     .limit(50);
