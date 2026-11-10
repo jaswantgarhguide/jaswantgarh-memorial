@@ -171,13 +171,36 @@
             Your Message
         </label>
 
-        <textarea
-            id="visitorMessage"
-            maxlength="500"
-            rows="5"
-            placeholder="Write your message..."
-            required
-        ></textarea>
+       <textarea
+    id="visitorMessage"
+    maxlength="500"
+    rows="5"
+    placeholder="Write your message..."
+    required
+></textarea>
+
+<div class="remark-selfie-field">
+
+  <label for="remarkSelfie">
+    Add Selfie <span>(optional)</span>
+  </label>
+
+  <input
+    id="remarkSelfie"
+    type="file"
+    accept="image/*"
+    capture="user"
+  >
+
+  <div id="remarkSelfiePreviewWrap" class="remark-selfie-preview" hidden>
+    <img id="remarkSelfiePreview" alt="Selfie preview">
+
+    <button id="removeRemarkSelfie" type="button">
+      REMOVE
+    </button>
+  </div>
+
+</div>
 
         <button
             type="submit"
